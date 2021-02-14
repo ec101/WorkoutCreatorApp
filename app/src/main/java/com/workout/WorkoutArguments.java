@@ -2,27 +2,19 @@ package com.workout;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class WorkoutArguments {
 
-	private InputStream exerciseInput;
+	public static final WorkoutArguments DEFAULT_ARGS = new  WorkoutArguments(15, new String[]{"PUSH", "LEGS", "CARDIO", "PULL", "LEGS", "CARDIO", "PUSH", "LEGS", "CARDIO", "PULL", "LEGS", "CARDIO", "ABS", "ABS", "ABS"});
+
 	private int numberOfExercises;
 	private List<String> workoutPattern;
 
-	public WorkoutArguments(InputStream exerciseInput, String[] args) {
-		this.exerciseInput = exerciseInput;
-		numberOfExercises = 15;
-		workoutPattern = new ArrayList<String>();
-		if(args.length > 0){
-			if(args[0] != null) {
-				numberOfExercises = Integer.valueOf(args[0]).intValue();
-			}
-
-			for(int i = 1; i < args.length; i++) {
-				workoutPattern.add(args[i]);
-			}
-		}
+	public WorkoutArguments(int numberOfExercises, String[] args) {
+		this.numberOfExercises = numberOfExercises;
+		workoutPattern = Arrays.asList(args);
 	}
 
 	public WorkoutArguments(int numberOfExercises, List<String> workoutPattern) {
@@ -43,5 +35,4 @@ public class WorkoutArguments {
 		return workoutPattern != null && workoutPattern.size() > 0;
 	}
 
-	public InputStream getExerciseInput() {return exerciseInput; }
 }

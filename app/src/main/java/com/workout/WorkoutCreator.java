@@ -5,25 +5,9 @@ import java.util.*;
 
 public class WorkoutCreator {
 
-	public Workout createWorkout(InputStream input, String[] args) {
-		Workout workout = null;
-		try {
-			WorkoutArguments workoutArguments = new WorkoutArguments(input, args);
-
-			ExcerciseLoader loader = new ExcerciseLoader();
-			
-			List<Exercise> exercises = loader.loadExercies(workoutArguments);
-			
-			WorkoutGeneratorFactory workoutGeneratorFactory = new DefaultWorkoutGeneratorFactory();
-
-			WorkoutGenerator workoutGenerator = workoutGeneratorFactory.newWorkoutGenerator(workoutArguments, exercises);
-
-			workout = workoutGenerator.generateWorkout();
-
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-			e.printStackTrace();
-		}
-		return workout;
+	public Workout createWorkout(WorkoutArguments workoutArguments, List<Exercise> exercises) {
+		WorkoutGeneratorFactory workoutGeneratorFactory = new DefaultWorkoutGeneratorFactory();
+		WorkoutGenerator workoutGenerator = workoutGeneratorFactory.newWorkoutGenerator(workoutArguments, exercises);
+		return workoutGenerator.generateWorkout();
 	}
 }
