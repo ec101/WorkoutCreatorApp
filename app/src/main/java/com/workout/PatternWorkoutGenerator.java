@@ -31,7 +31,6 @@ public class PatternWorkoutGenerator extends AbstractWorkoutGenerator {
 				}
 				list.add(exercise);
 			}
-			
 		}
 		return map;
 	}
