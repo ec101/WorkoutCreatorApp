@@ -33,11 +33,10 @@ public class SettingsActivity extends AppCompatActivity {
         ExcerciseLoader loader = new ExcerciseLoader();
         List<Exercise> exercises = loader.loadExercies(res, getAssets());
 
-        Button b1=(Button) findViewById(R.id.button);
+        Button b1= findViewById(R.id.button);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v){
                 generateWorkout(exercises);
             }
         });
