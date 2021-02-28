@@ -1,7 +1,10 @@
 package com.example.workoutcreatorapp;
 
 import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
@@ -24,19 +27,39 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.settings_activity);
 
+        Resources res = getResources();
         ExcerciseLoader loader = new ExcerciseLoader();
-        List<Exercise> exercises = loader.loadExercies(getAssets());
+        List<Exercise> exercises = loader.loadExercies(res, getAssets());
 
+        Button b1=(Button) findViewById(R.id.button);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                generateWorkout(exercises);
+            }
+        });
+
+        String workoutAsText = res.getString(R.string.generic_error);
+
+        if(exercises != null && !exercises.isEmpty()) {
+            generateWorkout(exercises);
+        }else{
+            TextView textView = findViewById(R.id.textView);
+            textView.setText(workoutAsText);
+            b1.setEnabled(false);
+        }
+    }
+
+    private void generateWorkout(List<Exercise> exercises){
         WorkoutCreator workoutCreator = new WorkoutCreator();
         Workout workout = workoutCreator.createWorkout(WorkoutArguments.DEFAULT_ARGS, exercises);
-
         DefaultWorkoutPrinter printer = new DefaultWorkoutPrinter();
         String workoutAsText = printer.printWorkout(workout);
-
-        TextView textView = new TextView(this);
+        TextView textView = findViewById(R.id.textView);
         textView.setText(workoutAsText);
-        setContentView(textView);
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {

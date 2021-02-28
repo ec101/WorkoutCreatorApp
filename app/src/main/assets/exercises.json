@@ -1,46 +1,46 @@
 [
   {"name":"Alt-Single Leg Box Squats","description":"","exerciseTypes":["LEGS"]},
   {"name":"1 & 1/2 Bottom out Squats","description":"","exerciseTypes":["LEGS"]},
-  {"name":"Air squats w/ jump","description":"","exerciseTypes":["LEGS","CARDIO"]},
+  {"name":"Air squats w/ jump","description":"","exerciseTypes":["LEGS"]},
   {"name":"Heel touch squats alternate single leg","description":"","exerciseTypes":["LEGS"]},
   {"name":"Alternate sprinter lunge","description":"","exerciseTypes":["LEGS"]},
-  {"name":"Plyo / Jump sprinter lunge","description":"","exerciseTypes":["LEGS","CARDIO"]},
+  {"name":"Plyo / Jump sprinter lunge","description":"","exerciseTypes":["LEGS"]},
   {"name":"Slick floor bridge curls","description":"","exerciseTypes":["LEGS"]},
   {"name":"Long leg marches","description":"","exerciseTypes":["LEGS"]},
   {"name":"Single Leg hip bucks","description":"","exerciseTypes":["LEGS"]},
   {"name":"Alternate Crossover Stepups","description":"","exerciseTypes":["LEGS"]},
   {"name":"Alternate Reverse Lunges","description":"","exerciseTypes":["LEGS"]},
   {"name":"Reverse lunge (chair) into front lunge alternate","description":"","exerciseTypes":["LEGS"]},
-  {"name":"Side skip & squats","description":"","exerciseTypes":["LEGS","CARDIO"]},
+  {"name":"Side skip & squats","description":"","exerciseTypes":["CARDIO"]},
   {"name":"Hostage walks","description":"","exerciseTypes":["LEGS"]},
-  {"name":"Cross Body Mountain Climbers","description":"","exerciseTypes":["LEGS","CARDIO"]},
+  {"name":"Cross Body Mountain Climbers","description":"","exerciseTypes":["ABS"]},
   {"name":"Reverse lunge w/ knee kick","description":"","exerciseTypes":["LEGS"]},
-  {"name":"Burpess w/ twist jump","description":"","exerciseTypes":["LEGS","CARDIO"]},
-  {"name":"Squat Thrusts","description":"","exerciseTypes":["LEGS","CARDIO"]},
-  {"name":"Bear crawls 5 up 5 down","description":"","exerciseTypes":["LEGS","CARDIO"]},
+  {"name":"Burpess w/ twist jump","description":"","exerciseTypes":["CARDIO"]},
+  {"name":"Squat Thrusts","description":"","exerciseTypes":["ABS"]},
+  {"name":"Bear crawls 5 up 5 down","description":"","exerciseTypes":["CARDIO"]},
   {"name":"Sliding lunge x5 each side","description":"","exerciseTypes":["LEGS"]},
   {"name":"Hostage pulses","description":"","exerciseTypes":["LEGS"]},
   {"name":"Single leg deadlift RHS/LHS","description":"","exerciseTypes":["LEGS"]},
   {"name":"Single leg raised hip bucks/glute thrusts","description":"","exerciseTypes":["LEGS"]},
   {"name":"Power squats (Air squat to single leg plus shoulder press)","description":"","exerciseTypes":["LEGS"]},
-  {"name":"BW Tricep extensions ","description":"","exerciseTypes":["PUSH","ARMS"]},
-  {"name":"Burpess w/ pushup","description":"","exerciseTypes":["PUSH","ARMS"]},
-  {"name":"Walk out push ups","description":"","exerciseTypes":["PUSH","ARMS"]},
-  {"name":"Inverted pushups","description":"","exerciseTypes":["PUSH","ARMS"]},
-  {"name":"Power pushaways","description":"","exerciseTypes":["PUSH","ARMS"]},
-  {"name":"Rotational Pushups","description":"","exerciseTypes":["PUSH","ARMS"]},
-  {"name":"Cobra pushups (narrow grip)","description":"","exerciseTypes":["PUSH","ARMS"]},
-  {"name":"Alternate Side Lateral Raises","description":"","exerciseTypes":["PUSH","ARMS"]},
-  {"name":"Body weight tricep extensions (using chair)","description":"","exerciseTypes":["PUSH","ARMS"]},
-  {"name":"Dips","description":"","exerciseTypes":["PUSH","ARMS"]},
-  {"name":"Diamond Push Ups (Narrow Grip)","description":"","exerciseTypes":["PUSH","ARMS"]},
-  {"name":"Dips / Push up - Alternate 5 Dip 1 Push or floor push/chair push","description":"","exerciseTypes":["PUSH","ARMS"]},
-  {"name":"Push up w/ alt raised leg","description":"","exerciseTypes":["PUSH","ARMS"]},
-  {"name":"Pendlay Rows/Bent over row","description":"","exerciseTypes":["ARMS","PULL"]},
-  {"name":"Arm Curls Cross Body Alternate","description":"","exerciseTypes":["ARMS","PULL"]},
-  {"name":"Seated rows (band)","description":"","exerciseTypes":["ARMS","PULL"]},
-  {"name":"Arm Curls Hammer Alternate","description":"","exerciseTypes":["ARMS","PULL"]},
-  {"name":"Arm curl hammer curl dual","description":"","exerciseTypes":["ARMS","PULL"]},
+  {"name":"BW Tricep extensions ","description":"","exerciseTypes":["PUSH"]},
+  {"name":"Burpess w/ pushup","description":"","exerciseTypes":["PUSH"]},
+  {"name":"Walk out push ups","description":"","exerciseTypes":["PUSH"]},
+  {"name":"Inverted pushups","description":"","exerciseTypes":["PUSH"]},
+  {"name":"Power pushaways","description":"","exerciseTypes":["PUSH"]},
+  {"name":"Rotational Pushups","description":"","exerciseTypes":["PUSH"]},
+  {"name":"Cobra pushups (narrow grip)","description":"","exerciseTypes":["PUSH"]},
+  {"name":"Alternate Side Lateral Raises","description":"","exerciseTypes":["ABS"]},
+  {"name":"Body weight tricep extensions (using chair)","description":"","exerciseTypes":["PUSH"]},
+  {"name":"Dips","description":"","exerciseTypes":["PUSH"]},
+  {"name":"Diamond Push Ups (Narrow Grip)","description":"","exerciseTypes":["PUSH"]},
+  {"name":"Dips / Push up - Alternate 5 Dip 1 Push or floor push/chair push","description":"","exerciseTypes":["PUSH"]},
+  {"name":"Push up w/ alt raised leg","description":"","exerciseTypes":["PUSH"]},
+  {"name":"Pendlay Rows/Bent over row","description":"","exerciseTypes":["PULL"]},
+  {"name":"Arm Curls Cross Body Alternate","description":"","exerciseTypes":["PULL"]},
+  {"name":"Seated rows (band)","description":"","exerciseTypes":["PULL"]},
+  {"name":"Arm Curls Hammer Alternate","description":"","exerciseTypes":["PULL"]},
+  {"name":"Arm curl hammer curl dual","description":"","exerciseTypes":["PULL"]},
   {"name":"Levitation Crunch","description":"","exerciseTypes":["ABS"]},
   {"name":"Russian Twists","description":"","exerciseTypes":["ABS"]},
   {"name":"Reverse Corkscrews","description":"","exerciseTypes":["ABS"]},
@@ -52,5 +52,30 @@
   {"name":"Super plank","description":"","exerciseTypes":["ABS"]},
   {"name":"Squat thrusts","description":"","exerciseTypes":["ABS"]},
   {"name":"Disco Planks - Up Up Down Down / Elbows/Hands","description":"","exerciseTypes":["ABS"]},
-  {"name":"Walking planks elbows -  left left right right","description":"","exerciseTypes":["ABS"]}
-]
+  {"name":"Walking planks elbows -  left left right right","description":"","exerciseTypes":["ABS"]}]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -17,4 +17,13 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <string name="reload">Reload</string>
+
+    <!-- Error messages -->
+    <string name="generic_error">Error generating workout</string>
+    <string name="open_file">Unable to open file</string>
+    <string name="close_file">Unable to close file</string>
+    <string name="load_file">Unable to load file</string>
+    <string name="parse_file">Unable to parse file</string>
 </resources>
