@@ -7,7 +7,10 @@ import java.util.List;
 
 public class WorkoutArguments {
 
-	public static final WorkoutArguments DEFAULT_ARGS = new  WorkoutArguments(15, new String[]{"PUSH", "LEGS", "CARDIO", "PULL", "LEGS", "CARDIO", "PUSH", "LEGS", "CARDIO", "PULL", "LEGS", "CARDIO", "ABS", "ABS", "ABS"});
+	public static final WorkoutArguments STANDARD_WORKOUT_1 = new  WorkoutArguments(15, new String[]{"PUSH", "LEGS", "CARDIO", "PULL", "LEGS", "CARDIO", "PUSH", "LEGS", "CARDIO", "PULL", "LEGS", "CARDIO", "ABS", "ABS", "ABS"});
+
+	public static final WorkoutArguments STANDARD_WORKOUT_2 = new  WorkoutArguments(16, new String[]{"PUSH", "LEGS", "CARDIO", "ABS", "PULL", "LEGS", "CARDIO", "ABS", "PUSH", "LEGS", "CARDIO", "ABS", "PULL", "LEGS", "CARDIO", "ABS"});
+
 
 	private int numberOfExercises;
 	private List<String> workoutPattern;

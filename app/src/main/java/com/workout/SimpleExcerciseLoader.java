@@ -15,9 +15,19 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class ExcerciseLoader {
+public class SimpleExcerciseLoader implements ExerciseLoader{
 
-	public List<Exercise> loadExercies(Resources res, AssetManager assets) {
+	private final Resources res;
+	private final AssetManager assets;
+
+	public SimpleExcerciseLoader(Resources res, AssetManager assets){
+		super();
+		this.res = res;
+		this.assets = assets;
+	}
+
+	@Override
+	public List<Exercise> loadExercies() {
 		InputStream input = null;
 		ArrayList<Exercise> copy = new ArrayList<Exercise>();
 

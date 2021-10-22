@@ -4,6 +4,13 @@ import java.util.List;
 
 public class DefaultWorkoutPrinter implements WorkoutPrinter {
 
+	private int grouping;
+
+	public DefaultWorkoutPrinter(int grouping){
+		super();
+		this.grouping= grouping;
+	}
+
 	public String printWorkout(Workout workout) {
 		StringBuilder stringBuilder = new StringBuilder();
 		List<Exercise> exercises = workout.getExercises();
@@ -16,7 +23,7 @@ public class DefaultWorkoutPrinter implements WorkoutPrinter {
 
 	private void printExercise(int number, Exercise exercise, StringBuilder stringBuilder) {
 		stringBuilder.append(number+": "+exercise.getName()+"\n");
-		if(number%3 == 0) {
+		if(number%this.grouping == 0) {
 			stringBuilder.append("\n");
 		}
 	}

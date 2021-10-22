@@ -20,6 +20,8 @@
 
     <string name="reload">Reload</string>
 
+    <string name="share">Share</string>
+
     <!-- Error messages -->
     <string name="generic_error">Error generating workout</string>
     <string name="open_file">Unable to open file</string>
