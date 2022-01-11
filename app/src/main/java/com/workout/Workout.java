@@ -6,4 +6,6 @@ public interface Workout {
 
 	public List<Exercise> getExercises();
 
+	public boolean contains(Exercise exercise);
+
 }

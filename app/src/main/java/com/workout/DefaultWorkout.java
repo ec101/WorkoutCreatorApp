@@ -21,12 +21,16 @@ public class DefaultWorkout implements Workout {
 	}
 
 	@Override
+	public boolean contains(Exercise exercise) {
+		return this.exercises.contains(exercise);
+	}
+
+	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		for(Exercise exercise : exercises) {
 			builder.append(exercise.toString()+"\n");
 		}
 		return builder.toString();
-		
 	}
 }
