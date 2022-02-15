@@ -27,7 +27,7 @@
   {"name":"Pyramid Sumo Calf Raises","description":"","exerciseTypes":["LEGS"]},
   {"name":"Butt Kickers / Running on Spot","description":"","exerciseTypes":["CARDIO"]},
   {"name":"Burpess w/ twist jump","description":"","exerciseTypes":["CARDIO"]},
-  {"name":"Squat Thrusts","description":"","exerciseTypes":["CARDIO"]},
+  {"name":"Squat Thrusts","description":"","exerciseTypes":["CARDIO","ABS"]},
   {"name":"Bear crawls 5 up 5 down","description":"","exerciseTypes":["CARDIO"]},
   {"name":"Side skip & squats","description":"","exerciseTypes":["CARDIO"]},
   {"name":"Bear Crawl Pushups","description":"","exerciseTypes":["PUSH"]},
@@ -60,7 +60,6 @@
   {"name":"Sit ups with elbow touch","description":"","exerciseTypes":["ABS"]},
   {"name":"Sit-throughs - jiu jitsu","description":"","exerciseTypes":["ABS"]},
   {"name":"Super plank","description":"","exerciseTypes":["ABS"]},
-  {"name":"Squat thrusts","description":"","exerciseTypes":["ABS"]},
   {"name":"Disco Planks - Up Up Down Down / Elbows/Hands","description":"","exerciseTypes":["ABS"]},
   {"name":"Walking planks elbows -  left left right right","description":"","exerciseTypes":["ABS"]},
   {"name":"Windshield Wipers","description":"","exerciseTypes":["ABS"]},
@@ -68,4 +67,5 @@
   {"name":"Slow Scissors Cross Leg","description":"","exerciseTypes":["ABS"]},
   {"name":"Crab Cross Touch","description":"","exerciseTypes":["ABS"]},
   {"name":"Side Plank Crunk 3 each side","description":"","exerciseTypes":["ABS"]},
-  {"name":"Ab Scissors 5x5","description":"","exerciseTypes":["ABS"]}]
+  {"name":"Ab Scissors 5x5","description":"","exerciseTypes":["ABS"]},
+  {"name":"Thrust Frogs","description":"","exerciseTypes":["ABS"]}]
