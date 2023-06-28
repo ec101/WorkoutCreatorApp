@@ -22,6 +22,8 @@
 
     <string name="share">Share</string>
 
+    <string name="travel_mode">Travel Mode</string>
+
     <!-- Error messages -->
     <string name="generic_error">Error generating workout</string>
     <string name="open_file">Unable to open file</string>

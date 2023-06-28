@@ -1,12 +1,16 @@
 package com.workout;
 
+import java.util.List;
+
 public interface Exercise {
 
 	String getName();
 	
 	String getDescription();
 	
-	String[] getExerciseTypes();
+	List<String> getExerciseTypes();
 	
 	boolean isOfType(String type);
+
+	List<String> getNeededEquipment();
 }

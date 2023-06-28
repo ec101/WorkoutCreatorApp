@@ -22,14 +22,17 @@ public class PatternWorkoutGenerator extends AbstractWorkoutGenerator {
 	private Map<String, List<Exercise>> initExerciseMap() {
 		HashMap<String, List<Exercise>> map = new HashMap<String, List<Exercise>>();
 		for(Exercise exercise : this.exercises) {
-			String[] types = exercise.getExerciseTypes();
+			List<String> types = exercise.getExerciseTypes();
 			for(String type : types) {
 				List<Exercise> list = map.get(type);
 				if(list == null) {
 					list = new ArrayList<Exercise>();
 					map.put(type, list);
 				}
-				list.add(exercise);
+				if(this.getWorkoutArguments().getEquipment().isEmpty() ||
+						this.getWorkoutArguments().getEquipment().containsAll(exercise.getNeededEquipment())) {
+					list.add(exercise);
+				}
 			}
 		}
 		return map;
@@ -37,10 +40,13 @@ public class PatternWorkoutGenerator extends AbstractWorkoutGenerator {
 
 	public Workout generateWorkout() {
 		DefaultWorkout workout = new DefaultWorkout();
-		for(int i = 0; i < this.getWorkoutArguments().getNumberOfExercises(); i++) {
-			String type = getNextExerciseType(i);
-			Exercise nextExercise = getNextExercise(type);
+		Iterator<String> patternIterator = getWorkoutArguments().getWorkoutPattern().iterator();
+		for(int i = 0; i < this.getWorkoutArguments().getNumberOfExercises() && patternIterator.hasNext(); i++) {
+			Exercise nextExercise = getNextExercise(patternIterator.next());
 			workout.addExercise(nextExercise);
+			if(!patternIterator.hasNext()){
+				patternIterator = getWorkoutArguments().getWorkoutPattern().iterator();
+			}
 		}
 		return workout;
 	}
@@ -55,16 +61,4 @@ public class PatternWorkoutGenerator extends AbstractWorkoutGenerator {
 		}
 		return iterator.next();
 	}
-
-	private String getNextExerciseType(int index) {
-		String type = "";
-		if(index >= getWorkoutArguments().getWorkoutPattern().size()) {
-			int i = index % getWorkoutArguments().getWorkoutPattern().size();
-			type = getWorkoutArguments().getWorkoutPattern().get(i);
-		} else {
-			type = getWorkoutArguments().getWorkoutPattern().get(index);
-		}
-		return type;
-	}
-
 }

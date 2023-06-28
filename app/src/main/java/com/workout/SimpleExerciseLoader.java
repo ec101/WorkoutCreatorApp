@@ -3,7 +3,6 @@ package com.workout;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -15,12 +14,12 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class SimpleExcerciseLoader implements ExerciseLoader{
+public class SimpleExerciseLoader implements ExerciseLoader{
 
 	private final Resources res;
 	private final AssetManager assets;
 
-	public SimpleExcerciseLoader(Resources res, AssetManager assets){
+	public SimpleExerciseLoader(Resources res, AssetManager assets){
 		super();
 		this.res = res;
 		this.assets = assets;
@@ -29,7 +28,6 @@ public class SimpleExcerciseLoader implements ExerciseLoader{
 	@Override
 	public List<Exercise> loadExercies() {
 		InputStream input = null;
-		ArrayList<Exercise> copy = new ArrayList<Exercise>();
 
 		try {
 			input = assets.open("exercises.json");
@@ -37,18 +35,7 @@ public class SimpleExcerciseLoader implements ExerciseLoader{
 			System.err.println(res.getString(R.string.open_file));
 		}
 
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			List<DefaultExercise> exercises = Arrays.asList(mapper.readValue(input, DefaultExercise[].class));
-			//TODO - hack to avoid generics issues
-			copy = new ArrayList<Exercise>(exercises);
-		} catch (JsonParseException e) {
-			System.err.println(res.getString(R.string.parse_file));
-		} catch (JsonMappingException e) {
-			System.err.println(res.getString(R.string.parse_file));
-		} catch (IOException e) {
-			System.err.println(res.getString(R.string.load_file));
-		}
+		List<Exercise> exercises = readExercises(input);
 
 		try {
 			if(input !=null) {
@@ -58,6 +45,20 @@ public class SimpleExcerciseLoader implements ExerciseLoader{
 			System.err.println(res.getString(R.string.close_file));
 		}
 
-		return copy;
+		return exercises;
+	}
+
+	protected List<Exercise> readExercises(InputStream input){
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			return Arrays.asList(mapper.readValue(input, DefaultExercise[].class));
+		} catch (JsonParseException e) {
+			System.err.println(res.getString(R.string.parse_file));
+		} catch (JsonMappingException e) {
+			System.err.println(res.getString(R.string.parse_file));
+		} catch (IOException e) {
+			System.err.println(res.getString(R.string.load_file));
+		}
+		return new ArrayList<Exercise>();
 	}
 }

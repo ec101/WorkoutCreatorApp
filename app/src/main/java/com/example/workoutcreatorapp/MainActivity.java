@@ -1,5 +1,6 @@
 package com.example.workoutcreatorapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,10 +8,11 @@ import android.os.Bundle;
 
 import android.content.res.Resources;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.workout.DefaultWorkoutPrinter;
-import com.workout.SimpleExcerciseLoader;
+import com.workout.SimpleExerciseLoader;
 import com.workout.Exercise;
 import com.workout.Workout;
 import com.workout.WorkoutArguments;
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.settings_activity);
 
         Resources res = getResources();
-        SimpleExcerciseLoader loader = new SimpleExcerciseLoader(res, getAssets());
+        SimpleExerciseLoader loader = new SimpleExerciseLoader(res, getAssets());
         List<Exercise> exercises = loader.loadExercies();
 
         Button reloadBtn= findViewById(R.id.reload_button);
@@ -60,10 +62,19 @@ public class MainActivity extends AppCompatActivity {
 
     private void generateWorkout(List<Exercise> exercises) {
         WorkoutCreator workoutCreator = new WorkoutCreator();
-        Workout workout = workoutCreator.createWorkout(WorkoutArguments.STANDARD_WORKOUT_2, exercises);
+        Workout workout = workoutCreator.createWorkout(getWorkoutArguments(), exercises);
         DefaultWorkoutPrinter printer = new DefaultWorkoutPrinter(4);
         String workoutAsText = printer.printWorkout(workout);
         TextView textView = findViewById(R.id.textView);
         textView.setText(workoutAsText);
+    }
+
+    @NonNull
+    private WorkoutArguments getWorkoutArguments() {
+        CheckBox travelMode = findViewById(R.id.travel_mode);
+        if(travelMode.isChecked()){
+            return WorkoutArguments.TRAVEL_WORKOUT;
+        }
+        return WorkoutArguments.STANDARD_WORKOUT_2;
     }
 }
