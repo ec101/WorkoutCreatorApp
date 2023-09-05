@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.content.res.Resources;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -50,13 +48,6 @@ public class MainActivity extends AppCompatActivity {
             shareBtn.setEnabled(false);
         }
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.game_menu, menu);
-//        return true;
-//    }
 
     private void shareWorkout(){
         TextView textView = findViewById(R.id.textView);
