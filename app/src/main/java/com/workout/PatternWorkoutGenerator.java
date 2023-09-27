@@ -10,8 +10,8 @@ import java.util.Random;
 
 public class PatternWorkoutGenerator extends AbstractWorkoutGenerator {
 
-	private Map<String, List<Exercise>> exerciseMap;
-	private Map<String, Iterator<Exercise>> exerciseIteratorMap;
+	private final Map<String, List<Exercise>> exerciseMap;
+	private final Map<String, Iterator<Exercise>> exerciseIteratorMap;
 	
 	protected PatternWorkoutGenerator(WorkoutArguments args, List<Exercise> exercises) {
 		super(args, exercises);
@@ -29,8 +29,7 @@ public class PatternWorkoutGenerator extends AbstractWorkoutGenerator {
 					list = new ArrayList<Exercise>();
 					map.put(type, list);
 				}
-				if(this.getWorkoutArguments().getEquipment().isEmpty() ||
-						this.getWorkoutArguments().getEquipment().containsAll(exercise.getNeededEquipment())) {
+				if(meetsEquipmentRequirements(exercise) && meetsSpaceRequirements(exercise)) {
 					list.add(exercise);
 				}
 			}
@@ -38,14 +37,25 @@ public class PatternWorkoutGenerator extends AbstractWorkoutGenerator {
 		return map;
 	}
 
+	private boolean meetsSpaceRequirements(Exercise exercise) {
+		return !exercise.isSpaceNeeded() || !this.getWorkoutArguments().isSpaceRestrictions();
+	}
+
+	private boolean meetsEquipmentRequirements(Exercise exercise) {
+		return this.getWorkoutArguments().getEquipment().isEmpty() ||
+				this.getWorkoutArguments().getEquipment().containsAll(exercise.getNeededEquipment());
+	}
+
 	public Workout generateWorkout() {
 		DefaultWorkout workout = new DefaultWorkout();
 		Iterator<String> patternIterator = getWorkoutArguments().getWorkoutPattern().iterator();
 		for(int i = 0; i < this.getWorkoutArguments().getNumberOfExercises() && patternIterator.hasNext(); i++) {
 			Exercise nextExercise = getNextExercise(patternIterator.next());
-			workout.addExercise(nextExercise);
-			if(!patternIterator.hasNext()){
-				patternIterator = getWorkoutArguments().getWorkoutPattern().iterator();
+			if(nextExercise != null) {
+				workout.addExercise(nextExercise);
+				if (!patternIterator.hasNext()) {
+					patternIterator = getWorkoutArguments().getWorkoutPattern().iterator();
+				}
 			}
 		}
 		return workout;
@@ -55,10 +65,15 @@ public class PatternWorkoutGenerator extends AbstractWorkoutGenerator {
 		Iterator<Exercise> iterator = exerciseIteratorMap.get(type);
 		if(iterator == null || !iterator.hasNext()) {
 			List<Exercise> exerciseList = exerciseMap.get(type);
-			Collections.shuffle(exerciseList, new Random(System.currentTimeMillis()));
-			iterator = exerciseList.iterator();
-			exerciseIteratorMap.put(type, iterator);
+			if(exerciseList!= null) {
+				Collections.shuffle(exerciseList, new Random(System.currentTimeMillis()));
+				iterator = exerciseList.iterator();
+				exerciseIteratorMap.put(type, iterator);
+			}
 		}
-		return iterator.next();
+		if(iterator.hasNext()) {
+			return iterator.next();
+		}
+		return null;
 	}
 }

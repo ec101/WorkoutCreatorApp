@@ -9,15 +9,17 @@ public class DefaultExercise implements Exercise {
 	private String description;
 	private String[] exerciseTypes;
 	private String[]  neededEquipment;
+	private boolean spaceNeeded;
 
 	public DefaultExercise() {
 	}
 	
-	public DefaultExercise(String name, String description, String[] exerciseTypes, String[]  neededEquipment) {
+	public DefaultExercise(String name, String description, String[] exerciseTypes, String[]  neededEquipment, boolean spaceNeeded) {
 		this.name = name;
 		this.description = description;
 		this.exerciseTypes = exerciseTypes;
 		this.neededEquipment = neededEquipment;
+		this.spaceNeeded = spaceNeeded;
 	}
 	
 	public String getName() {
@@ -30,6 +32,10 @@ public class DefaultExercise implements Exercise {
 
 	public List<String> getExerciseTypes() {
 		return Arrays.asList(exerciseTypes);
+	}
+
+	public boolean isSpaceNeeded() {
+		return spaceNeeded;
 	}
 
 	public boolean isOfType(String type) {
@@ -65,6 +71,12 @@ public class DefaultExercise implements Exercise {
 		builder.append("needed equipment: ");
 		for(String equipment : this.neededEquipment) {
 			builder.append(equipment+" ");
+		}
+		builder.append("space Needed: ");
+		if(isSpaceNeeded()){
+			builder.append("yes");
+		}else{
+			builder.append("no");
 		}
 		return builder.toString();
 	}
