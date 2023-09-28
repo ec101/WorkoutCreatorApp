@@ -3,6 +3,7 @@ package com.workout;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -16,19 +17,15 @@ public class PatternWorkoutGenerator extends AbstractWorkoutGenerator {
 	protected PatternWorkoutGenerator(WorkoutArguments args, List<Exercise> exercises) {
 		super(args, exercises);
 		exerciseMap = initExerciseMap();
-		exerciseIteratorMap = new HashMap<String, Iterator<Exercise>>();
+		exerciseIteratorMap = new HashMap<>();
 	}
 	
 	private Map<String, List<Exercise>> initExerciseMap() {
-		HashMap<String, List<Exercise>> map = new HashMap<String, List<Exercise>>();
+		HashMap<String, List<Exercise>> map = new HashMap<>();
 		for(Exercise exercise : this.exercises) {
 			List<String> types = exercise.getExerciseTypes();
 			for(String type : types) {
-				List<Exercise> list = map.get(type);
-				if(list == null) {
-					list = new ArrayList<Exercise>();
-					map.put(type, list);
-				}
+				List<Exercise> list = map.computeIfAbsent(type, k -> new ArrayList<>());
 				if(meetsEquipmentRequirements(exercise) && meetsSpaceRequirements(exercise)) {
 					list.add(exercise);
 				}
@@ -43,7 +40,7 @@ public class PatternWorkoutGenerator extends AbstractWorkoutGenerator {
 
 	private boolean meetsEquipmentRequirements(Exercise exercise) {
 		return this.getWorkoutArguments().getEquipment().isEmpty() ||
-				this.getWorkoutArguments().getEquipment().containsAll(exercise.getNeededEquipment());
+				new HashSet<>(this.getWorkoutArguments().getEquipment()).containsAll(exercise.getNeededEquipment());
 	}
 
 	public Workout generateWorkout() {
@@ -71,7 +68,7 @@ public class PatternWorkoutGenerator extends AbstractWorkoutGenerator {
 				exerciseIteratorMap.put(type, iterator);
 			}
 		}
-		if(iterator.hasNext()) {
+		if(iterator != null && iterator.hasNext()) {
 			return iterator.next();
 		}
 		return null;

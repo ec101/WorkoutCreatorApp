@@ -27,7 +27,7 @@ public class SimpleWorkoutGenerator extends AbstractWorkoutGenerator {
 	}
 	
 	private  List<Exercise> setupExercises(List<Exercise> exercises) {
-		List<Exercise> exercisesCopy = new ArrayList<Exercise>(exercises);
+		List<Exercise> exercisesCopy = new ArrayList<>(exercises);
 		Collections.shuffle(exercisesCopy, new Random(System.currentTimeMillis()));
 		return exercisesCopy;
 	}

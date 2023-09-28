@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface WorkoutGeneratorFactory {
 
-	public WorkoutGenerator newWorkoutGenerator(WorkoutArguments workoutArguments, List<Exercise> exercises);
+	WorkoutGenerator newWorkoutGenerator(WorkoutArguments workoutArguments, List<Exercise> exercises);
 	
 }

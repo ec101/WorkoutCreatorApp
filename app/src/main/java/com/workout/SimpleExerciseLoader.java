@@ -27,7 +27,7 @@ public class SimpleExerciseLoader implements ExerciseLoader{
 	}
 
 	@Override
-	public List<Exercise> loadExercies() {
+	public List<Exercise> loadExercises() {
 		InputStream input = null;
 
 		try {
@@ -53,13 +53,11 @@ public class SimpleExerciseLoader implements ExerciseLoader{
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			return Arrays.asList(mapper.readValue(input, DefaultExercise[].class));
-		} catch (JsonParseException e) {
-			System.err.println(res.getString(R.string.parse_file));
-		} catch (JsonMappingException e) {
+		} catch (JsonParseException | JsonMappingException e) {
 			System.err.println(res.getString(R.string.parse_file));
 		} catch (IOException e) {
 			System.err.println(res.getString(R.string.load_file));
 		}
-		return new ArrayList<Exercise>();
+		return new ArrayList<>();
 	}
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class DefaultWorkoutPrinter implements WorkoutPrinter {
 
-	private int grouping;
+	private final int grouping;
 
 	public DefaultWorkoutPrinter(int grouping){
 		super();
@@ -22,7 +22,7 @@ public class DefaultWorkoutPrinter implements WorkoutPrinter {
 	}
 
 	private void printExercise(int number, Exercise exercise, StringBuilder stringBuilder) {
-		stringBuilder.append(number+": "+exercise.getName()+"\n");
+		stringBuilder.append(number).append(": ").append(exercise.getName()).append("\n");
 		if(number%this.grouping == 0) {
 			stringBuilder.append("\n");
 		}

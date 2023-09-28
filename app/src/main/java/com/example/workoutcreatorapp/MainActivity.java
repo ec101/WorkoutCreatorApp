@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         Resources res = getResources();
         SimpleExerciseLoader loader = new SimpleExerciseLoader(res, getAssets());
-        List<Exercise> exercises = loader.loadExercies();
+        List<Exercise> exercises = loader.loadExercises();
 
         Button reloadBtn= findViewById(R.id.reload_button);
         reloadBtn.setOnClickListener(v -> generateWorkout(exercises));

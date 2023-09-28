@@ -1,15 +1,17 @@
 package com.workout;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class DefaultWorkout implements Workout {
 
-	private List<Exercise> exercises;
+	private final List<Exercise> exercises;
 	
 	public DefaultWorkout() {
 		super();
-		this.exercises = new ArrayList<Exercise>();
+		this.exercises = new ArrayList<>();
 	}
 
 	public void addExercise(Exercise exercise) {
@@ -25,11 +27,12 @@ public class DefaultWorkout implements Workout {
 		return this.exercises.contains(exercise);
 	}
 
+	@NonNull
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		for(Exercise exercise : exercises) {
-			builder.append(exercise.toString()+"\n");
+			builder.append(exercise.toString()).append("\n");
 		}
 		return builder.toString();
 	}
