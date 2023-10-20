@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/share"
+        android:icon="@drawable/outline_share_24"
+        android:title="share"
+        android:contentDescription="Share"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/reload"
+        android:icon="@drawable/outline_update_24"
+        android:title="reload"
+        android:contentDescription="Reload"
+        app:showAsAction="ifRoom" />
+
+</menu>
