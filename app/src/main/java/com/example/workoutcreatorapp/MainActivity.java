@@ -2,6 +2,7 @@ package com.example.workoutcreatorapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.ActionMenuItemView;
 import androidx.core.widget.NestedScrollView;
 
 import android.content.Intent;
@@ -9,10 +10,9 @@ import android.os.Bundle;
 
 import android.content.res.Resources;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.workout.DefaultWorkoutPrinter;
 import com.workout.SimpleExerciseLoader;
 import com.workout.Exercise;
@@ -26,33 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Exercise> exercises;
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.settings_activity);
-//
-//        Resources res = getResources();
-//        SimpleExerciseLoader loader = new SimpleExerciseLoader(res, getAssets());
-//        List<Exercise> exercises = loader.loadExercises();
-//
-//        Button reloadBtn= findViewById(R.id.reload_button);
-//        reloadBtn.setOnClickListener(v -> generateWorkout(exercises));
-//
-//        Button shareBtn= findViewById(R.id.share_button);
-//        shareBtn.setOnClickListener(v -> shareWorkout());
-//
-//        String workoutAsText = res.getString(R.string.generic_error);
-//
-//        if(exercises != null && !exercises.isEmpty()) {
-//            generateWorkout(exercises);
-//        }else{
-//            TextView textView = findViewById(R.id.textView);
-//            textView.setText(workoutAsText);
-//            reloadBtn.setEnabled(false);
-//            shareBtn.setEnabled(false);
-//        }
-//    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,11 +35,13 @@ public class MainActivity extends AppCompatActivity {
         SimpleExerciseLoader loader = new SimpleExerciseLoader(res, getAssets());
         exercises = loader.loadExercises();
 
-//        Button reloadBtn = findViewById(R.id.reload);
-//        reloadBtn.setOnClickListener(v -> generateWorkout(exercises));
-//
-//        Button shareBtn= findViewById(R.id.share);
-//        shareBtn.setOnClickListener(v -> shareWorkout());
+        MaterialToolbar topAppBar = findViewById(R.id.topAppBar);
+
+        ActionMenuItemView reloadButton = topAppBar.findViewById(R.id.reload);
+        reloadButton.setOnClickListener(v -> generateWorkout(exercises));
+
+        ActionMenuItemView shareButton = topAppBar.findViewById(R.id.share);
+        shareButton.setOnClickListener(v -> shareWorkout());
 
         String workoutAsText = res.getString(R.string.generic_error);
 
@@ -75,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
         }else{
             TextView textView = findViewById(R.id.textView2);
             textView.setText(workoutAsText);
-//            reloadBtn.setEnabled(false);
-//            shareBtn.setEnabled(false);
+            reloadButton.setEnabled(false);
+            shareButton.setEnabled(false);
         }
     }
 
