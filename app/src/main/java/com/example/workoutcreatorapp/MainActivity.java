@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         if(exercises != null && !exercises.isEmpty()) {
             generateWorkout(exercises);
         }else{
-            TextView textView = findViewById(R.id.textView);
+            TextView textView = findViewById(R.id.textView2);
             textView.setText(workoutAsText);
 //            reloadBtn.setEnabled(false);
 //            shareBtn.setEnabled(false);
@@ -122,16 +122,16 @@ public class MainActivity extends AppCompatActivity {
         Workout workout = workoutCreator.createWorkout(getWorkoutArguments(), exercises);
         DefaultWorkoutPrinter printer = new DefaultWorkoutPrinter(4);
         String workoutAsText = printer.printWorkout(workout);
-        NestedScrollView textView = findViewById(R.id.scrollView);
-        textView.set.setText(workoutAsText);
+        TextView textView = findViewById(R.id.textView2);
+        textView.setText(workoutAsText);
     }
 
     @NonNull
     private WorkoutArguments getWorkoutArguments() {
-        CheckBox travelMode = findViewById(R.id.travel_mode);
-        if(travelMode.isChecked()){
-            return WorkoutArguments.TRAVEL_WORKOUT;
-        }
+  //        CheckBox travelMode = findViewById(R.id.travel_mode);
+//        if(travelMode.isChecked()){
+//            return WorkoutArguments.TRAVEL_WORKOUT;
+//        }
         //TODO
         //add selection of options
         //not sure I need to update WorkoutArguments
