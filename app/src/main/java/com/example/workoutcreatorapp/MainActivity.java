@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void shareWorkout(){
-        TextView textView = findViewById(R.id.textView);
+        TextView textView = findViewById(R.id.textView2);
         String workout = textView.getText().toString();
 
         Intent myIntent = new Intent(Intent.ACTION_SEND);
