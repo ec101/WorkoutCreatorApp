@@ -3,13 +3,11 @@ package com.example.workoutcreatorapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.ActionMenuItemView;
-import androidx.core.widget.NestedScrollView;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import android.content.res.Resources;
-import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -29,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.settings_activity2);
+        setContentView(R.layout.main_activity);
 
         Resources res = getResources();
         SimpleExerciseLoader loader = new SimpleExerciseLoader(res, getAssets());
@@ -43,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
         ActionMenuItemView shareButton = topAppBar.findViewById(R.id.share);
         shareButton.setOnClickListener(v -> shareWorkout());
 
+        ActionMenuItemView settingsButton = topAppBar.findViewById(R.id.settings);
+        settingsButton.setOnClickListener(v -> launchSettingsActivity());
+
         String workoutAsText = res.getString(R.string.generic_error);
 
         if(exercises != null && !exercises.isEmpty()) {
@@ -55,27 +56,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.reload:
-                generateWorkout(exercises);
-                return true;
-            case R.id.share:
-                shareWorkout();
-                return true;
-            default:
-                // The user's action isn't recognized.
-                // Invoke the superclass to handle it.
-                return super.onOptionsItemSelected(item);
-
-        }
-    }
-
     private void shareWorkout(){
         TextView textView = findViewById(R.id.textView2);
         String workout = textView.getText().toString();
-
         Intent myIntent = new Intent(Intent.ACTION_SEND);
         myIntent.setType("text/plain");
         myIntent.putExtra(Intent.EXTRA_SUBJECT,"Workout");
@@ -83,14 +66,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(Intent.createChooser(myIntent, "Share Using"));
     }
 
-//    private void generateWorkout(List<Exercise> exercises) {
-//        WorkoutCreator workoutCreator = new WorkoutCreator();
-//        Workout workout = workoutCreator.createWorkout(getWorkoutArguments(), exercises);
-//        DefaultWorkoutPrinter printer = new DefaultWorkoutPrinter(4);
-//        String workoutAsText = printer.printWorkout(workout);
-//        TextView textView = findViewById(R.id.textView);
-//        textView.setText(workoutAsText);
-//    }
+    private void launchSettingsActivity(){
+        //TODO
+    }
 
     private void generateWorkout(List<Exercise> exercises) {
         WorkoutCreator workoutCreator = new WorkoutCreator();
@@ -103,14 +81,6 @@ public class MainActivity extends AppCompatActivity {
 
     @NonNull
     private WorkoutArguments getWorkoutArguments() {
-  //        CheckBox travelMode = findViewById(R.id.travel_mode);
-//        if(travelMode.isChecked()){
-//            return WorkoutArguments.TRAVEL_WORKOUT;
-//        }
-        //TODO
-        //add selection of options
-        //not sure I need to update WorkoutArguments
-        // read https://m2.material.io/components/app-bars-top/android#regular-top-app-bar
         return WorkoutArguments.STANDARD_WORKOUT_2;
     }
 }

@@ -6,13 +6,20 @@
         android:icon="@drawable/outline_share_24"
         android:title="share"
         android:contentDescription="Share"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/reload"
         android:icon="@drawable/outline_update_24"
         android:title="reload"
         android:contentDescription="Reload"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/baseline_settings_24"
+        android:title="reload"
+        android:contentDescription="Reload"
+        app:showAsAction="always" />
 
 </menu>
