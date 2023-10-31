@@ -3,7 +3,6 @@ package com.workout;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +25,7 @@ public class PatternWorkoutGenerator extends AbstractWorkoutGenerator {
 			List<String> types = exercise.getExerciseTypes();
 			for(String type : types) {
 				List<Exercise> list = map.computeIfAbsent(type, k -> new ArrayList<>());
-				if(meetsEquipmentRequirements(exercise) && meetsSpaceRequirements(exercise)) {
+				if(meetsRequirements(exercise)) {
 					list.add(exercise);
 				}
 			}
@@ -34,13 +33,20 @@ public class PatternWorkoutGenerator extends AbstractWorkoutGenerator {
 		return map;
 	}
 
-	private boolean meetsSpaceRequirements(Exercise exercise) {
-		return !exercise.isSpaceNeeded() || !this.getWorkoutArguments().isSpaceRestrictions();
-	}
+	private boolean meetsRequirements(Exercise exercise) {
+		if(this.getWorkoutArguments().isSpaceRestrictions()){
+			return !exercise.isSpaceNeeded();
+		}
 
-	private boolean meetsEquipmentRequirements(Exercise exercise) {
-		return this.getWorkoutArguments().getEquipment().isEmpty() ||
-				new HashSet<>(this.getWorkoutArguments().getEquipment()).containsAll(exercise.getNeededEquipment());
+		if(this.getWorkoutArguments().isKettleBell()){
+			return exercise.getNeededEquipment().contains("Kettle");
+		}
+
+		if(this.getWorkoutArguments().isResistanceBand()){
+			return exercise.getNeededEquipment().contains("Resistance Band");
+		}
+
+		return true;
 	}
 
 	public Workout generateWorkout() {

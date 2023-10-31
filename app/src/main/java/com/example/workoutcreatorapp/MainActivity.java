@@ -67,20 +67,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void launchSettingsActivity(){
-        //TODO
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 
     private void generateWorkout(List<Exercise> exercises) {
         WorkoutCreator workoutCreator = new WorkoutCreator();
-        Workout workout = workoutCreator.createWorkout(getWorkoutArguments(), exercises);
+        Workout workout = workoutCreator.createWorkout(WorkoutArguments.WORKOUT_ARGS, exercises);
         DefaultWorkoutPrinter printer = new DefaultWorkoutPrinter(4);
         String workoutAsText = printer.printWorkout(workout);
         TextView textView = findViewById(R.id.textView2);
         textView.setText(workoutAsText);
-    }
-
-    @NonNull
-    private WorkoutArguments getWorkoutArguments() {
-        return WorkoutArguments.STANDARD_WORKOUT_2;
     }
 }

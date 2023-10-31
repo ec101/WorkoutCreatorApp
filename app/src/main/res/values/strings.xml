@@ -30,4 +30,9 @@
     <string name="close_file">Unable to close file</string>
     <string name="load_file">Unable to load file</string>
     <string name="parse_file">Unable to parse file</string>
+
+    <string name="resistance_band">resistanceBand</string>
+    <string name="kettle_bell">kettleBell</string>
+    <string name="space_restriction">spaceRestriction</string>
+
 </resources>
