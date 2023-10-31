@@ -22,30 +22,15 @@ public class SettingsActivity extends AppCompatActivity {
 
         CheckBox resistanceBandCheckBox = findViewById(R.id.withResistanceBand);
         resistanceBandCheckBox.setChecked(WorkoutArguments.WORKOUT_ARGS.isResistanceBand());
-        resistanceBandCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                updateResistanceBandSetting(b);
-            }
-        });
+        resistanceBandCheckBox.setOnCheckedChangeListener((compoundButton, b) -> updateResistanceBandSetting(b));
 
         CheckBox kettleBellCheckBox = findViewById(R.id.withKettle);
         kettleBellCheckBox.setChecked(WorkoutArguments.WORKOUT_ARGS.isKettleBell());
-        kettleBellCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                updateKettleBellSetting(b);
-            }
-        });
+        kettleBellCheckBox.setOnCheckedChangeListener((compoundButton, b) -> updateKettleBellSetting(b));
 
         CheckBox spaceRestrictionsCheckBox = findViewById(R.id.spaceRestrictions);
         spaceRestrictionsCheckBox.setChecked(WorkoutArguments.WORKOUT_ARGS.isSpaceRestrictions());
-        spaceRestrictionsCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                updateSpaceRestrictionSetting(b);
-            }
-        });
+        spaceRestrictionsCheckBox.setOnCheckedChangeListener((compoundButton, b) -> updateSpaceRestrictionSetting(b));
     }
 
     private void updateResistanceBandSetting(boolean value){

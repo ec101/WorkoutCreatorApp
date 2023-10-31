@@ -6,7 +6,7 @@ import java.util.List;
 
 public class WorkoutArguments {
 
-	public static WorkoutArguments WORKOUT_ARGS = new  WorkoutArguments(16, new String[]{"PUSH", "LEGS", "CARDIO", "ABS", "PULL", "LEGS", "CARDIO", "ABS", "PUSH", "LEGS", "CARDIO", "ABS", "PULL", "LEGS", "CARDIO", "ABS"}, true, true, true);
+	public static final WorkoutArguments WORKOUT_ARGS = new  WorkoutArguments(16, new String[]{"PUSH", "LEGS", "CARDIO", "ABS", "PULL", "LEGS", "CARDIO", "ABS", "PUSH", "LEGS", "CARDIO", "ABS", "PULL", "LEGS", "CARDIO", "ABS"}, true, true, true);
 
 	private final int numberOfExercises;
 	private final List<String> workoutPattern;
