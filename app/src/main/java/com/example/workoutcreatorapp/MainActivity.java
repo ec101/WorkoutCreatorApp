@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import android.content.res.Resources;
 import android.widget.TextView;
+import android.view.View;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.workout.DefaultWorkoutPrinter;
@@ -43,13 +44,13 @@ public class MainActivity extends AppCompatActivity {
 
         MaterialToolbar topAppBar = findViewById(R.id.topAppBar);
 
-        ActionMenuItemView reloadButton = topAppBar.findViewById(R.id.reload);
+        View reloadButton = topAppBar.findViewById(R.id.reload);
         reloadButton.setOnClickListener(v -> generateWorkout(exercises));
 
-        ActionMenuItemView shareButton = topAppBar.findViewById(R.id.share);
+        View shareButton = topAppBar.findViewById(R.id.share);
         shareButton.setOnClickListener(v -> shareWorkout());
 
-        ActionMenuItemView settingsButton = topAppBar.findViewById(R.id.settings);
+        View settingsButton = topAppBar.findViewById(R.id.settings);
         settingsButton.setOnClickListener(v -> launchSettingsActivity());
 
         if(exercises != null && !exercises.isEmpty()) {
