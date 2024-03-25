@@ -14,7 +14,7 @@ public class SimpleWorkoutGenerator extends AbstractWorkoutGenerator {
 	public Workout generateWorkout() {
 		List<Exercise> exercisesCopy = setupExercises(exercises);
 		DefaultWorkout workout = new DefaultWorkout();
-		for(int i = 0; i < this.getWorkoutArguments().getNumberOfExercises(); i++) {
+		for(int i = 0; i < this.getWorkoutArguments().getWorkoutPattern().size(); i++) {
 			Exercise nextExercise = getNextExercise(i, exercisesCopy);
 			if(nextExercise != null) {
 				workout.addExercise(nextExercise);

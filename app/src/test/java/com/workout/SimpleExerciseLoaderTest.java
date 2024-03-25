@@ -13,6 +13,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Set;
 
 
 public class SimpleExerciseLoaderTest {
@@ -53,6 +54,16 @@ public class SimpleExerciseLoaderTest {
         ExtendedSimpleExerciseLoader loader = new ExtendedSimpleExerciseLoader(res, assets);
         List<Exercise> exercises = loader.loadExercises();
         assertFalse(exercises.isEmpty());
+    }
+
+    @Test
+    public void getNeededEquipment() {
+        Resources res = mock(Resources.class);
+        AssetManager assets = mock(AssetManager.class);
+        ExtendedSimpleExerciseLoader loader = new ExtendedSimpleExerciseLoader(res, assets);
+        List<Exercise> exercises = loader.loadExercises();
+        Set<Equipment> neededEquipment = loader.getEquipmentNeeded(exercises);
+        assertFalse(neededEquipment.isEmpty());
     }
 
 }

@@ -2,59 +2,34 @@ package com.workout;
 
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class WorkoutArguments {
 
-	public static final WorkoutArguments WORKOUT_ARGS = new  WorkoutArguments(16, new String[]{"PUSH", "LEGS", "CARDIO", "ABS", "PULL", "LEGS", "CARDIO", "ABS", "PUSH", "LEGS", "CARDIO", "ABS", "PULL", "LEGS", "CARDIO", "ABS"}, true, true, true);
-
-	private final int numberOfExercises;
+	public static List<String> WORKOUT_PATTERN = Arrays.asList(new String[]{"PUSH", "LEGS", "CARDIO", "ABS", "PULL", "LEGS", "CARDIO", "ABS", "PUSH", "LEGS", "CARDIO", "ABS", "PULL", "LEGS", "CARDIO", "ABS"});
 	private final List<String> workoutPattern;
-	private boolean kettleBell;
-	private boolean resistanceBand;
-	private boolean spaceRestrictions;
+	private final Set<Equipment> equipmentNeeded;
 
-	public WorkoutArguments(int numberOfExercises, String[] workoutPattern, boolean kettleBell, boolean resistanceBand, boolean spaceRestrictions) {
-		this.numberOfExercises = numberOfExercises;
-		this.workoutPattern = Arrays.asList(workoutPattern);
-		this.kettleBell = kettleBell;
-		this.resistanceBand = resistanceBand;
-		this.spaceRestrictions = spaceRestrictions;
-	}
-
-	public int getNumberOfExercises() {
-		return numberOfExercises;
+	public WorkoutArguments(List<String> workoutPattern, Set<Equipment> equipmentNeeded) {
+		this.workoutPattern = workoutPattern;
+		this.equipmentNeeded = equipmentNeeded;
 	}
 
 	public List<String> getWorkoutPattern() {
 		return workoutPattern;
 	}
 
+	public Set<Equipment> getEquipmentNeeded() { return equipmentNeeded; }
+
+	public void setEquipmentNeeded(Equipment equipment){
+		this.equipmentNeeded.add(equipment);
+	}
+
 	public boolean hasWorkoutPattern() {
 		return workoutPattern != null && workoutPattern.size() > 0;
 	}
 
-	public boolean isKettleBell(){
-		return kettleBell;
-	}
-
-	public boolean isResistanceBand(){
-		return resistanceBand;
-	}
-
-	public boolean isSpaceRestrictions() {
-		return spaceRestrictions;
-	}
-
-	public void setKettleBell(boolean value){
-		this.kettleBell = value;
-	}
-
-	public void setResistanceBand(boolean value){
-		this.resistanceBand = value;
-	}
-
-	public void setSpaceRestrictions(boolean value){
-		this.spaceRestrictions = value;
-	}
 }

@@ -11,16 +11,24 @@ import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.workout.DefaultWorkoutPrinter;
+import com.workout.Equipment;
 import com.workout.SimpleExerciseLoader;
 import com.workout.Exercise;
 import com.workout.Workout;
 import com.workout.WorkoutArguments;
 import com.workout.WorkoutCreator;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static WorkoutArguments NO_SPACE = new WorkoutArguments(WorkoutArguments.WORKOUT_PATTERN,
+            new HashSet<Equipment>(Arrays.asList(Equipment.KETTLE_BELL, Equipment.RESISTANCE_BAND)));
     private List<Exercise> exercises;
 
     @Override
@@ -31,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         Resources res = getResources();
         SimpleExerciseLoader loader = new SimpleExerciseLoader(res, getAssets());
         exercises = loader.loadExercises();
+        Set<Equipment> equipmentNeeded = loader.getEquipmentNeeded(exercises);
 
         MaterialToolbar topAppBar = findViewById(R.id.topAppBar);
 
@@ -43,12 +52,11 @@ public class MainActivity extends AppCompatActivity {
         ActionMenuItemView settingsButton = topAppBar.findViewById(R.id.settings);
         settingsButton.setOnClickListener(v -> launchSettingsActivity());
 
-        String workoutAsText = res.getString(R.string.generic_error);
-
         if(exercises != null && !exercises.isEmpty()) {
             generateWorkout(exercises);
         }else{
             TextView textView = findViewById(R.id.textView2);
+            String workoutAsText = res.getString(R.string.generic_error);
             textView.setText(workoutAsText);
             reloadButton.setEnabled(false);
             shareButton.setEnabled(false);
@@ -67,12 +75,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void launchSettingsActivity(){
         Intent intent = new Intent(this, SettingsActivity.class);
+        intent.putExtra("equipment", NO_SPACE.getEquipmentNeeded().toArray());
         startActivity(intent);
     }
 
     private void generateWorkout(List<Exercise> exercises) {
         WorkoutCreator workoutCreator = new WorkoutCreator();
-        Workout workout = workoutCreator.createWorkout(WorkoutArguments.WORKOUT_ARGS, exercises);
+        Workout workout = workoutCreator.createWorkout(NO_SPACE, exercises);
         DefaultWorkoutPrinter printer = new DefaultWorkoutPrinter(4);
         String workoutAsText = printer.printWorkout(workout);
         TextView textView = findViewById(R.id.textView2);

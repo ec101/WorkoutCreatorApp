@@ -12,7 +12,6 @@ public interface Exercise {
 	
 	boolean isOfType(String type);
 
-	List<String> getNeededEquipment();
+	List<Equipment> getNeededEquipment();
 
-	boolean isSpaceNeeded();
 }

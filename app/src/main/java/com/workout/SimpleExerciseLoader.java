@@ -8,6 +8,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import com.example.workoutcreatorapp.R;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -59,5 +61,11 @@ public class SimpleExerciseLoader implements ExerciseLoader{
 			System.err.println(res.getString(R.string.load_file));
 		}
 		return new ArrayList<>();
+	}
+
+	public Set<Equipment> getEquipmentNeeded(List<Exercise> exercises) {
+		TreeSet<Equipment> equipment = new TreeSet<Equipment>();
+		exercises.forEach(n -> equipment.addAll(n.getNeededEquipment()));
+		return equipment;
 	}
 }

@@ -2,6 +2,7 @@ package com.workout;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,18 +11,22 @@ public class DefaultExercise implements Exercise {
 	private String name;
 	private String description;
 	private String[] exerciseTypes;
-	private String[]  neededEquipment;
-	private boolean spaceNeeded;
+	private List<Equipment> neededEquipment;
 
 	public DefaultExercise(){
 	}
 
-	public DefaultExercise(String name, String description, String[] exerciseTypes, String[]  neededEquipment, boolean spaceNeeded) {
+	public DefaultExercise(String name, String description, String[] exerciseTypes, String[] neededEquipment) {
 		this.name = name;
 		this.description = description;
 		this.exerciseTypes = exerciseTypes;
-		this.neededEquipment = neededEquipment;
-		this.spaceNeeded = spaceNeeded;
+		this.neededEquipment = new ArrayList<Equipment>();
+		for(String equipment : neededEquipment){
+			Equipment equ = Equipment.getEquipment(equipment);
+			if(equ != null) {
+				this.neededEquipment.add(equ);
+			}
+		}
 	}
 	
 	public String getName() {
@@ -34,10 +39,6 @@ public class DefaultExercise implements Exercise {
 
 	public List<String> getExerciseTypes() {
 		return Arrays.asList(exerciseTypes);
-	}
-
-	public boolean isSpaceNeeded() {
-		return spaceNeeded;
 	}
 
 	public boolean isOfType(String type) {
@@ -56,8 +57,8 @@ public class DefaultExercise implements Exercise {
 	}
 
 	@Override
-	public List<String> getNeededEquipment() {
-		return Arrays.asList(neededEquipment);
+	public List<Equipment> getNeededEquipment() {
+		return neededEquipment;
 	}
 
 	@NonNull
@@ -72,14 +73,9 @@ public class DefaultExercise implements Exercise {
 			builder.append(type).append(" ");
 		}
 		builder.append("needed equipment: ");
-		for(String equipment : this.neededEquipment) {
-			builder.append(equipment).append(" ");
-		}
-		builder.append("space Needed: ");
-		if(isSpaceNeeded()){
-			builder.append("yes");
-		}else{
-			builder.append("no");
+		for(Equipment equipment : this.neededEquipment) {
+			//TODO - will end up with comma as last character
+			builder.append(equipment.getName()).append(",");
 		}
 		return builder.toString();
 	}

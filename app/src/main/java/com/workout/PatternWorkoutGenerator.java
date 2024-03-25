@@ -34,16 +34,20 @@ public class PatternWorkoutGenerator extends AbstractWorkoutGenerator {
 	}
 
 	private boolean meetsRequirements(Exercise exercise) {
-		if(this.getWorkoutArguments().isSpaceRestrictions()){
-			return !exercise.isSpaceNeeded();
+		if(this.getWorkoutArguments().getEquipmentNeeded().contains(Equipment.SPACE)){
+			return exercise.getNeededEquipment().contains(Equipment.SPACE);
 		}
 
-		if(this.getWorkoutArguments().isKettleBell()){
-			return exercise.getNeededEquipment().contains("Kettle");
+		if(this.getWorkoutArguments().getEquipmentNeeded().contains(Equipment.KETTLE_BELL)){
+			return exercise.getNeededEquipment().contains(Equipment.KETTLE_BELL);
 		}
 
-		if(this.getWorkoutArguments().isResistanceBand()){
-			return exercise.getNeededEquipment().contains("Resistance Band");
+		if(this.getWorkoutArguments().getEquipmentNeeded().contains(Equipment.RESISTANCE_BAND)){
+			return exercise.getNeededEquipment().contains(Equipment.RESISTANCE_BAND);
+		}
+
+		if(this.getWorkoutArguments().getEquipmentNeeded().contains(Equipment.CHAIR)){
+			return exercise.getNeededEquipment().contains(Equipment.CHAIR);
 		}
 
 		return true;
@@ -52,7 +56,7 @@ public class PatternWorkoutGenerator extends AbstractWorkoutGenerator {
 	public Workout generateWorkout() {
 		DefaultWorkout workout = new DefaultWorkout();
 		Iterator<String> patternIterator = getWorkoutArguments().getWorkoutPattern().iterator();
-		for(int i = 0; i < this.getWorkoutArguments().getNumberOfExercises() && patternIterator.hasNext(); i++) {
+		for(int i = 0; i < this.getWorkoutArguments().getWorkoutPattern().size() && patternIterator.hasNext(); i++) {
 			Exercise nextExercise = getNextExercise(patternIterator.next());
 			if(nextExercise != null) {
 				workout.addExercise(nextExercise);
