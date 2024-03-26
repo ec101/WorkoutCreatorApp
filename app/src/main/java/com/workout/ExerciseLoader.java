@@ -7,5 +7,4 @@ public interface ExerciseLoader {
 
     List<Exercise> loadExercises();
 
-    Set<Equipment> getEquipmentNeeded(List<Exercise> exercises);
 }

@@ -1,7 +1,6 @@
 package com.example.workoutcreatorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.ActionMenuItemView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,17 +18,14 @@ import com.workout.Workout;
 import com.workout.WorkoutArguments;
 import com.workout.WorkoutCreator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 
 public class MainActivity extends AppCompatActivity {
 
     public static WorkoutArguments NO_SPACE = new WorkoutArguments(WorkoutArguments.WORKOUT_PATTERN,
-            new HashSet<Equipment>(Arrays.asList(Equipment.KETTLE_BELL, Equipment.RESISTANCE_BAND)));
+            new HashSet<>(Arrays.asList(Equipment.KETTLE_BELL, Equipment.RESISTANCE_BAND)));
     private List<Exercise> exercises;
 
     @Override
@@ -40,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         Resources res = getResources();
         SimpleExerciseLoader loader = new SimpleExerciseLoader(res, getAssets());
         exercises = loader.loadExercises();
-        Set<Equipment> equipmentNeeded = loader.getEquipmentNeeded(exercises);
 
         MaterialToolbar topAppBar = findViewById(R.id.topAppBar);
 

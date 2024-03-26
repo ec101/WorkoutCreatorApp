@@ -63,9 +63,4 @@ public class SimpleExerciseLoader implements ExerciseLoader{
 		return new ArrayList<>();
 	}
 
-	public Set<Equipment> getEquipmentNeeded(List<Exercise> exercises) {
-		TreeSet<Equipment> equipment = new TreeSet<Equipment>();
-		exercises.forEach(n -> equipment.addAll(n.getNeededEquipment()));
-		return equipment;
-	}
 }
