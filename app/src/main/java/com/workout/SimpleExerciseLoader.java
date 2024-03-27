@@ -8,8 +8,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 
 import com.example.workoutcreatorapp.R;
 import com.fasterxml.jackson.core.JsonParseException;

@@ -24,9 +24,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static WorkoutArguments NO_SPACE = new WorkoutArguments(WorkoutArguments.WORKOUT_PATTERN,
-            new HashSet<>(Arrays.asList(Equipment.KETTLE_BELL, Equipment.RESISTANCE_BAND)));
+
     private List<Exercise> exercises;
+    private WorkoutArguments workoutArguments = new WorkoutArguments(WorkoutArguments.WORKOUT_PATTERN,
+            new HashSet<>(Arrays.asList(Equipment.KETTLE_BELL, Equipment.RESISTANCE_BAND)));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,13 +72,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void launchSettingsActivity(){
         Intent intent = new Intent(this, SettingsActivity.class);
-        intent.putExtra("equipment", NO_SPACE.getEquipmentNeeded().toArray());
+        intent.putExtra("equipment", workoutArguments.getEquipmentNeeded().toArray());
         startActivity(intent);
     }
 
     private void generateWorkout(List<Exercise> exercises) {
         WorkoutCreator workoutCreator = new WorkoutCreator();
-        Workout workout = workoutCreator.createWorkout(NO_SPACE, exercises);
+        Workout workout = workoutCreator.createWorkout(workoutArguments, exercises);
         DefaultWorkoutPrinter printer = new DefaultWorkoutPrinter(4);
         String workoutAsText = printer.printWorkout(workout);
         TextView textView = findViewById(R.id.textView2);
