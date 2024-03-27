@@ -26,13 +26,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     private List<Exercise> exercises;
-    private WorkoutArguments workoutArguments = new WorkoutArguments(WorkoutArguments.WORKOUT_PATTERN,
-            new HashSet<>(Arrays.asList(Equipment.KETTLE_BELL, Equipment.RESISTANCE_BAND)));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+
+        Intent intent = getIntent();
 
         Resources res = getResources();
         SimpleExerciseLoader loader = new SimpleExerciseLoader(res, getAssets());
@@ -72,13 +72,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void launchSettingsActivity(){
         Intent intent = new Intent(this, SettingsActivity.class);
-        intent.putExtra("equipment", workoutArguments.getEquipmentNeeded().toArray());
         startActivity(intent);
     }
 
     private void generateWorkout(List<Exercise> exercises) {
         WorkoutCreator workoutCreator = new WorkoutCreator();
-        Workout workout = workoutCreator.createWorkout(workoutArguments, exercises);
+        Workout workout = workoutCreator.createWorkout(WorkoutArguments.getInstance(), exercises);
         DefaultWorkoutPrinter printer = new DefaultWorkoutPrinter(4);
         String workoutAsText = printer.printWorkout(workout);
         TextView textView = findViewById(R.id.textView2);
