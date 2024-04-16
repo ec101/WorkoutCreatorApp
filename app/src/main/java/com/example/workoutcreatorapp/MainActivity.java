@@ -11,15 +11,12 @@ import android.view.View;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.workout.DefaultWorkoutPrinter;
-import com.workout.Equipment;
 import com.workout.SimpleExerciseLoader;
 import com.workout.Exercise;
 import com.workout.Workout;
 import com.workout.WorkoutArguments;
 import com.workout.WorkoutCreator;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-
-        Intent intent = getIntent();
 
         Resources res = getResources();
         SimpleExerciseLoader loader = new SimpleExerciseLoader(res, getAssets());
