@@ -7,6 +7,8 @@ import java.util.Random;
 
 public class SimpleWorkoutGenerator extends AbstractWorkoutGenerator {
 
+	private static final int WORKOUT_SIZE = 16;
+
 	public SimpleWorkoutGenerator(WorkoutArguments args, List<Exercise> exercises) {
 		super(args, exercises);
 	}
@@ -14,7 +16,7 @@ public class SimpleWorkoutGenerator extends AbstractWorkoutGenerator {
 	public Workout generateWorkout() {
 		List<Exercise> exercisesCopy = setupExercises(exercises);
 		DefaultWorkout workout = new DefaultWorkout();
-		for(int i = 0; i < this.getWorkoutArguments().getWorkoutPattern().size(); i++) {
+		for(int i = 0; i < WORKOUT_SIZE; i++) {
 			Exercise nextExercise = getNextExercise(i, exercisesCopy);
 			if(nextExercise != null) {
 				workout.addExercise(nextExercise);

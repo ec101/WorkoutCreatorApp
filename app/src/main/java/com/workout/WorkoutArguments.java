@@ -13,7 +13,7 @@ public class WorkoutArguments {
 	private final List<String> workoutPattern;
 	private final Set<Equipment> equipmentNeeded;
 
-	private WorkoutArguments(List<String> workoutPattern, Set<Equipment> equipmentNeeded) {
+	public WorkoutArguments(List<String> workoutPattern, Set<Equipment> equipmentNeeded) {
 		this.workoutPattern = workoutPattern;
 		this.equipmentNeeded = equipmentNeeded;
 	}
