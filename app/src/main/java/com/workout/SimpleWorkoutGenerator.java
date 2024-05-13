@@ -14,7 +14,7 @@ public class SimpleWorkoutGenerator extends AbstractWorkoutGenerator {
 	}
 
 	public Workout generateWorkout() {
-		List<Exercise> exercisesCopy = setupExercises(exercises);
+		List<Exercise> exercisesCopy = initExercises(exercises);
 		DefaultWorkout workout = new DefaultWorkout();
 		for(int i = 0; i < WORKOUT_SIZE; i++) {
 			Exercise nextExercise = getNextExercise(i, exercisesCopy);
@@ -28,7 +28,7 @@ public class SimpleWorkoutGenerator extends AbstractWorkoutGenerator {
 		return workout;
 	}
 	
-	private  List<Exercise> setupExercises(List<Exercise> exercises) {
+	private  List<Exercise> initExercises(List<Exercise> exercises) {
 		List<Exercise> exercisesCopy = new ArrayList<>(exercises);
 		Collections.shuffle(exercisesCopy, new Random(System.currentTimeMillis()));
 		return exercisesCopy;

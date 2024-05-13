@@ -27,10 +27,6 @@ public class WorkoutArguments {
 
 	public Set<Equipment> getEquipmentNeeded() { return equipmentNeeded; }
 
-	public void setEquipmentNeeded(Equipment equipment){
-		this.equipmentNeeded.add(equipment);
-	}
-
 	public boolean hasWorkoutPattern() {
 		return workoutPattern != null && !workoutPattern.isEmpty();
 	}

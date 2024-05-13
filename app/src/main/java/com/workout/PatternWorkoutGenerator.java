@@ -25,32 +25,13 @@ public class PatternWorkoutGenerator extends AbstractWorkoutGenerator {
 			List<String> types = exercise.getExerciseTypes();
 			for(String type : types) {
 				List<Exercise> list = map.computeIfAbsent(type, k -> new ArrayList<>());
+				//TODO remove this
 				if(meetsRequirements(exercise)) {
 					list.add(exercise);
 				}
 			}
 		}
 		return map;
-	}
-
-	private boolean meetsRequirements(Exercise exercise) {
-		if(this.getWorkoutArguments().getEquipmentNeeded().contains(Equipment.SPACE)){
-			return exercise.getNeededEquipment().contains(Equipment.SPACE);
-		}
-
-		if(this.getWorkoutArguments().getEquipmentNeeded().contains(Equipment.KETTLE_BELL)){
-			return exercise.getNeededEquipment().contains(Equipment.KETTLE_BELL);
-		}
-
-		if(this.getWorkoutArguments().getEquipmentNeeded().contains(Equipment.RESISTANCE_BAND)){
-			return exercise.getNeededEquipment().contains(Equipment.RESISTANCE_BAND);
-		}
-
-		if(this.getWorkoutArguments().getEquipmentNeeded().contains(Equipment.CHAIR)){
-			return exercise.getNeededEquipment().contains(Equipment.CHAIR);
-		}
-
-		return true;
 	}
 
 	public Workout generateWorkout() {
