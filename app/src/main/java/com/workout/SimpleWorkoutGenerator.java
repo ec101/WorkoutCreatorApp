@@ -14,8 +14,12 @@ public class SimpleWorkoutGenerator extends AbstractWorkoutGenerator {
 	}
 
 	public Workout generateWorkout() {
-		List<Exercise> exercisesCopy = initExercises(exercises);
 		DefaultWorkout workout = new DefaultWorkout();
+		if(exercises.isEmpty()){
+			return workout;
+		}
+
+		List<Exercise> exercisesCopy = shuffleExercises(exercises);
 		for(int i = 0; i < WORKOUT_SIZE; i++) {
 			Exercise nextExercise = getNextExercise(i, exercisesCopy);
 			if(nextExercise != null) {
@@ -28,7 +32,7 @@ public class SimpleWorkoutGenerator extends AbstractWorkoutGenerator {
 		return workout;
 	}
 	
-	private  List<Exercise> initExercises(List<Exercise> exercises) {
+	private  List<Exercise> shuffleExercises(List<Exercise> exercises) {
 		List<Exercise> exercisesCopy = new ArrayList<>(exercises);
 		Collections.shuffle(exercisesCopy, new Random(System.currentTimeMillis()));
 		return exercisesCopy;
