@@ -13,12 +13,8 @@ public class SimpleWorkoutGenerator extends AbstractWorkoutGenerator {
 		super(args, exercises);
 	}
 
-	public Workout generateWorkout() {
+	protected Workout generateSpecificWorkout() {
 		DefaultWorkout workout = new DefaultWorkout();
-		if(exercises.isEmpty()){
-			return workout;
-		}
-
 		List<Exercise> exercisesCopy = shuffleExercises(exercises);
 		for(int i = 0; i < WORKOUT_SIZE; i++) {
 			Exercise nextExercise = getNextExercise(i, exercisesCopy);

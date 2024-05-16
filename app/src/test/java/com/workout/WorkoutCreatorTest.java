@@ -47,7 +47,6 @@ public class WorkoutCreatorTest {
         WorkoutCreator workoutCreator = new WorkoutCreator();
         WorkoutArguments workoutArgs = new WorkoutArguments(new ArrayList<>(), new HashSet<>(Arrays.asList(Equipment.KETTLE_BELL)));
         Workout workout = workoutCreator.createWorkout(workoutArgs, exercises);
-        //TODO assert that exercises in workout only need kettle bell (or nothing)
         for(Exercise exercise : workout.getExercises()){
             List<Equipment> equipment = exercise.getNeededEquipment();
             assertTrue(equipment.isEmpty() || (equipment.size() == 1 && equipment.contains(Equipment.KETTLE_BELL)));
@@ -59,7 +58,6 @@ public class WorkoutCreatorTest {
         WorkoutCreator workoutCreator = new WorkoutCreator();
         WorkoutArguments workoutArgs = new WorkoutArguments(new ArrayList<>(), new HashSet<>(Arrays.asList(Equipment.RESISTANCE_BAND)));
         Workout workout = workoutCreator.createWorkout(workoutArgs, exercises);
-        //TODO assert that only exercise needing no exercises are returned
         assertTrue(workout.getExercises().isEmpty());
     }
 

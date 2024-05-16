@@ -34,7 +34,7 @@ public class PatternWorkoutGenerator extends AbstractWorkoutGenerator {
 		return map;
 	}
 
-	public Workout generateWorkout() {
+	public Workout generateSpecificWorkout() {
 		DefaultWorkout workout = new DefaultWorkout();
 		Iterator<String> patternIterator = getWorkoutArguments().getWorkoutPattern().iterator();
 		for(int i = 0; i < this.getWorkoutArguments().getWorkoutPattern().size() && patternIterator.hasNext(); i++) {

@@ -23,6 +23,15 @@ public abstract class AbstractWorkoutGenerator implements WorkoutGenerator {
 		return args;
 	}
 
+	public Workout generateWorkout() {
+		if(exercises.isEmpty()){
+			return new DefaultWorkout();
+		}
+		return generateSpecificWorkout();
+	}
+
+	protected abstract Workout generateSpecificWorkout();
+
 	protected boolean meetsRequirements(Exercise exercise) {
 		if(this.getWorkoutArguments().getEquipmentNeeded().contains(Equipment.SPACE)){
 			return exercise.getNeededEquipment().contains(Equipment.SPACE);
