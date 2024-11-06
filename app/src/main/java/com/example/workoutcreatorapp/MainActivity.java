@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     private void generateWorkout(List<Exercise> exercises) {
         WorkoutCreator workoutCreator = new WorkoutCreator();
         Workout workout = workoutCreator.createWorkout(WorkoutArguments.getInstance(), exercises);
-        DefaultWorkoutPrinter printer = new DefaultWorkoutPrinter(4);
+        DefaultWorkoutPrinter printer = new DefaultWorkoutPrinter();
         String workoutAsText = printer.printWorkout(workout);
         TextView textView = findViewById(R.id.textView2);
         textView.setText(workoutAsText);

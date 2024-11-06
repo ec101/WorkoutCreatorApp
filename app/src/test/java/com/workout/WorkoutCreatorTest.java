@@ -39,7 +39,7 @@ public class WorkoutCreatorTest {
     @Test
     public void workoutCreationTest() {
         WorkoutCreator workoutCreator = new WorkoutCreator();
-        WorkoutArguments workoutArgs = new WorkoutArguments(new ArrayList<>(), new HashSet<>(Arrays.asList(Equipment.KETTLE_BELL, Equipment.RESISTANCE_BAND)));
+        WorkoutArguments workoutArgs = new WorkoutArguments(16, new WorkoutPattern(), new HashSet<>(Arrays.asList(Equipment.KETTLE_BELL, Equipment.RESISTANCE_BAND)));
         Workout workout = workoutCreator.createWorkout(workoutArgs, exercises);
         assertTrue(!workout.getExercises().isEmpty());
     }
@@ -47,7 +47,7 @@ public class WorkoutCreatorTest {
     @Test
     public void workoutEquipmentTest() {
         WorkoutCreator workoutCreator = new WorkoutCreator();
-        WorkoutArguments workoutArgs = new WorkoutArguments(new ArrayList<>(), new HashSet<>(List.of(Equipment.KETTLE_BELL)));
+        WorkoutArguments workoutArgs = new WorkoutArguments(16, new WorkoutPattern(), new HashSet<>(List.of(Equipment.KETTLE_BELL)));
         Workout workout = workoutCreator.createWorkout(workoutArgs, exercises);
         for (Exercise exercise : workout.getExercises()) {
             List<Equipment> equipment = exercise.getNeededEquipment();
@@ -58,7 +58,7 @@ public class WorkoutCreatorTest {
     @Test
     public void emptyWorkoutEquipmentTest() {
         WorkoutCreator workoutCreator = new WorkoutCreator();
-        WorkoutArguments workoutArgs = new WorkoutArguments(new ArrayList<>(), new HashSet<>(List.of(Equipment.RESISTANCE_BAND)));
+        WorkoutArguments workoutArgs = new WorkoutArguments(16, new WorkoutPattern(), new HashSet<>(List.of(Equipment.RESISTANCE_BAND)));
         Workout workout = workoutCreator.createWorkout(workoutArgs, exercises);
         assertTrue(workout.getExercises().isEmpty());
     }
@@ -67,7 +67,7 @@ public class WorkoutCreatorTest {
     public void workoutPatternTest() {
         WorkoutCreator workoutCreator = new WorkoutCreator();
         List<String> workoutPattern = Arrays.asList("PUSH", "LEGS", "CARDIO");
-        WorkoutArguments workoutArgs = new WorkoutArguments(workoutPattern, new HashSet<>(Arrays.asList(Equipment.KETTLE_BELL, Equipment.RESISTANCE_BAND)));
+        WorkoutArguments workoutArgs = new WorkoutArguments(16, new WorkoutPattern(workoutPattern), new HashSet<>(Arrays.asList(Equipment.KETTLE_BELL, Equipment.RESISTANCE_BAND)));
         Workout workout = workoutCreator.createWorkout(workoutArgs, exercises);
         for(Exercise exercise : workout.getExercises()){
             List<Equipment> neededEquipment = exercise.getNeededEquipment();
@@ -78,7 +78,7 @@ public class WorkoutCreatorTest {
     @Test
     public void emptyWorkoutPatternTest() {
         WorkoutCreator workoutCreator = new WorkoutCreator();
-        WorkoutArguments workoutArgs = new WorkoutArguments(WorkoutArguments.WORKOUT_PATTERN, new HashSet<>(Arrays.asList(Equipment.RESISTANCE_BAND)));
+        WorkoutArguments workoutArgs = new WorkoutArguments(16, new WorkoutPattern(), new HashSet<>(Arrays.asList(Equipment.RESISTANCE_BAND)));
         Workout workout = workoutCreator.createWorkout(workoutArgs, exercises);
         assertTrue(workout.getExercises().isEmpty());
     }

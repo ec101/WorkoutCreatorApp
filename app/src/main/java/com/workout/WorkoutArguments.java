@@ -8,26 +8,31 @@ import java.util.Set;
 
 public class WorkoutArguments {
 
-	public static List<String> WORKOUT_PATTERN = Arrays.asList(new String[]{"PUSH", "LEGS", "CARDIO", "ABS", "PULL", "LEGS", "CARDIO", "ABS", "PUSH", "LEGS", "CARDIO", "ABS", "PULL", "LEGS", "CARDIO", "ABS"});
-	private static final WorkoutArguments WORKOUT_ARGUMENTS = new WorkoutArguments(WORKOUT_PATTERN, new HashSet<>(Arrays.asList(Equipment.KETTLE_BELL, Equipment.RESISTANCE_BAND)));
-	private final List<String> workoutPattern;
+	private static final int DEFAULT_WORKOUT_SIZE = 20;
+	private static final WorkoutArguments WORKOUT_ARGUMENTS = new WorkoutArguments(DEFAULT_WORKOUT_SIZE, new WorkoutPattern(), new HashSet<>(Arrays.asList(Equipment.KETTLE_BELL, Equipment.RESISTANCE_BAND)));
 	private final Set<Equipment> equipmentNeeded;
+	private final WorkoutPattern workoutPattern;
+	private int workoutSize;
 
-	public WorkoutArguments(List<String> workoutPattern, Set<Equipment> equipmentNeeded) {
+	public WorkoutArguments(int workoutSize, WorkoutPattern workoutPattern, Set<Equipment> equipmentNeeded) {
 		this.workoutPattern = workoutPattern;
 		this.equipmentNeeded = equipmentNeeded;
+		this.workoutSize = workoutSize;
 	}
 
 	public static WorkoutArguments getInstance(){
 		return WORKOUT_ARGUMENTS;
 	}
-	public List<String> getWorkoutPattern() {
+	public WorkoutPattern getWorkoutPattern() {
 		return workoutPattern;
 	}
-
 	public Set<Equipment> getEquipmentNeeded() { return equipmentNeeded; }
-
 	public boolean hasWorkoutPattern() {
-		return workoutPattern != null && !workoutPattern.isEmpty();
+		return workoutPattern != null;
+	}
+	public int getWorkoutSize() { return workoutSize; }
+
+	public void setWorkoutSize(int size){
+		this.workoutSize = size;
 	}
 }

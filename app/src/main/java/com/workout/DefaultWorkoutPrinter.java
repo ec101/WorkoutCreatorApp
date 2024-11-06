@@ -4,11 +4,12 @@ import java.util.List;
 
 public class DefaultWorkoutPrinter implements WorkoutPrinter {
 
+	private static final int DEFAULT_GROUPING = 4;
 	private final int grouping;
 
-	public DefaultWorkoutPrinter(int grouping){
+	public DefaultWorkoutPrinter(){
 		super();
-		this.grouping= grouping;
+		this.grouping= DEFAULT_GROUPING;
 	}
 
 	public String printWorkout(Workout workout) {

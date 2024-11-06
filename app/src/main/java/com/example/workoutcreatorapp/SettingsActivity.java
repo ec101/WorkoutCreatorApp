@@ -5,12 +5,18 @@ import android.widget.CheckBox;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.workout.Equipment;
 import com.workout.WorkoutArguments;
 
 import java.util.Set;
 
 public class SettingsActivity extends AppCompatActivity {
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +34,7 @@ public class SettingsActivity extends AppCompatActivity {
         kettleBellCheckBox.setOnCheckedChangeListener((compoundButton, b) -> updateKettleBellSetting(b));
 
         CheckBox spaceRestrictionsCheckBox = findViewById(R.id.spaceRestrictions);
-        spaceRestrictionsCheckBox.setChecked(equipmentNeeded.contains(Equipment.SPACE));
+        spaceRestrictionsCheckBox.setChecked(!equipmentNeeded.contains(Equipment.SPACE));
         spaceRestrictionsCheckBox.setOnCheckedChangeListener((compoundButton, b) -> updateSpaceRestrictionSetting(b));
 
         CheckBox chairCheckBox = findViewById(R.id.withChair);
@@ -45,7 +51,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void updateSpaceRestrictionSetting(boolean value){
-        updateEquipmentNeeded(value, Equipment.SPACE);
+        updateEquipmentNeeded(!value, Equipment.SPACE);
     }
 
     private void updateChairSetting(boolean value){

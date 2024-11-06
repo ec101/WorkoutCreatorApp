@@ -36,14 +36,11 @@ public class PatternWorkoutGenerator extends AbstractWorkoutGenerator {
 
 	public Workout generateSpecificWorkout() {
 		DefaultWorkout workout = new DefaultWorkout();
-		Iterator<String> patternIterator = getWorkoutArguments().getWorkoutPattern().iterator();
-		for(int i = 0; i < this.getWorkoutArguments().getWorkoutPattern().size() && patternIterator.hasNext(); i++) {
-			Exercise nextExercise = getNextExercise(patternIterator.next());
+		WorkoutPattern workoutPattern = getWorkoutArguments().getWorkoutPattern();
+		for(int i = 0; i < this.getWorkoutArguments().getWorkoutSize(); i++) {
+			Exercise nextExercise = getNextExercise(workoutPattern.getNextWorkoutType());
 			if(nextExercise != null) {
 				workout.addExercise(nextExercise);
-				if (!patternIterator.hasNext()) {
-					patternIterator = getWorkoutArguments().getWorkoutPattern().iterator();
-				}
 			}
 		}
 		return workout;

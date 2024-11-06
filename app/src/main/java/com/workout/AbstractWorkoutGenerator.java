@@ -33,23 +33,20 @@ public abstract class AbstractWorkoutGenerator implements WorkoutGenerator {
 	protected abstract Workout generateSpecificWorkout();
 
 	protected boolean meetsRequirements(Exercise exercise) {
-		if(this.getWorkoutArguments().getEquipmentNeeded().contains(Equipment.SPACE)){
-			return exercise.getNeededEquipment().contains(Equipment.SPACE);
+
+		if(exercise.getNeededEquipment().contains(Equipment.SPACE) && !this.getWorkoutArguments().getEquipmentNeeded().contains(Equipment.SPACE)){
+			return false;
 		}
 
-		if(this.getWorkoutArguments().getEquipmentNeeded().contains(Equipment.KETTLE_BELL)){
-			return exercise.getNeededEquipment().contains(Equipment.KETTLE_BELL);
+		if(exercise.getNeededEquipment().contains(Equipment.KETTLE_BELL) && !this.getWorkoutArguments().getEquipmentNeeded().contains(Equipment.KETTLE_BELL)){
+			return false;
 		}
 
-		if(this.getWorkoutArguments().getEquipmentNeeded().contains(Equipment.RESISTANCE_BAND)){
-			return exercise.getNeededEquipment().contains(Equipment.RESISTANCE_BAND);
+		if(exercise.getNeededEquipment().contains(Equipment.RESISTANCE_BAND) && !this.getWorkoutArguments().getEquipmentNeeded().contains(Equipment.RESISTANCE_BAND)){
+			return false;
 		}
 
-		if(this.getWorkoutArguments().getEquipmentNeeded().contains(Equipment.CHAIR)){
-			return exercise.getNeededEquipment().contains(Equipment.CHAIR);
-		}
-
-		return true;
-	}
+        return !exercise.getNeededEquipment().contains(Equipment.CHAIR) || this.getWorkoutArguments().getEquipmentNeeded().contains(Equipment.CHAIR);
+    }
 
 }

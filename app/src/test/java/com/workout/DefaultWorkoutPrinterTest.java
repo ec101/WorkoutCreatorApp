@@ -1,5 +1,6 @@
 package com.workout;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
@@ -37,19 +38,19 @@ public class DefaultWorkoutPrinterTest {
     @Test
     public void workoutPrinterTest() {
         WorkoutCreator workoutCreator = new WorkoutCreator();
-        WorkoutArguments workoutArgs = new WorkoutArguments(new ArrayList<>(), new HashSet<>(Arrays.asList(Equipment.KETTLE_BELL, Equipment.RESISTANCE_BAND)));
+        WorkoutArguments workoutArgs = new WorkoutArguments(16, new WorkoutPattern(), new HashSet<>(Arrays.asList(Equipment.KETTLE_BELL, Equipment.RESISTANCE_BAND)));
         Workout workout = workoutCreator.createWorkout(workoutArgs, exercises);
-        DefaultWorkoutPrinter printer = new DefaultWorkoutPrinter(4);
+        DefaultWorkoutPrinter printer = new DefaultWorkoutPrinter();
         String workoutAsText = printer.printWorkout(workout);
-        assertTrue(!workoutAsText.isEmpty());
+        assertFalse(workoutAsText.isEmpty());
     }
 
     @Test
     public void emptyWorkoutPrinterTest() {
         WorkoutCreator workoutCreator = new WorkoutCreator();
-        WorkoutArguments workoutArgs = new WorkoutArguments(new ArrayList<>(), new HashSet<>(List.of(Equipment.RESISTANCE_BAND)));
+        WorkoutArguments workoutArgs = new WorkoutArguments(0, new WorkoutPattern(), new HashSet<>(List.of(Equipment.RESISTANCE_BAND)));
         Workout workout = workoutCreator.createWorkout(workoutArgs, exercises);
-        DefaultWorkoutPrinter printer = new DefaultWorkoutPrinter(4);
+        DefaultWorkoutPrinter printer = new DefaultWorkoutPrinter();
         String workoutAsText = printer.printWorkout(workout);
         assertTrue(workoutAsText.isEmpty());
     }
