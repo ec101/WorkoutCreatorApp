@@ -5,7 +5,6 @@ import android.widget.CheckBox;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.workout.Equipment;
 import com.workout.WorkoutArguments;
 
@@ -23,7 +22,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
 
-        Set<Equipment> equipmentNeeded = WorkoutArguments.getInstance().getEquipmentNeeded();
+        Set<Equipment> equipmentNeeded = WorkoutArguments.SIMPLE_WORKOUT_ARGUMENTS.getEquipmentNeeded();
 
         CheckBox resistanceBandCheckBox = findViewById(R.id.withResistanceBand);
         resistanceBandCheckBox.setChecked(equipmentNeeded.contains(Equipment.RESISTANCE_BAND));
@@ -59,7 +58,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void updateEquipmentNeeded(boolean value, Equipment equipment) {
-        Set<Equipment> equipmentNeeded = WorkoutArguments.getInstance().getEquipmentNeeded();
+        Set<Equipment> equipmentNeeded = WorkoutArguments.SIMPLE_WORKOUT_ARGUMENTS.getEquipmentNeeded();
         if(value){
             equipmentNeeded.add(equipment);
         }else{

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class DefaultWorkoutPrinter implements WorkoutPrinter {
 
-	private static final int DEFAULT_GROUPING = 4;
+	private static final int DEFAULT_GROUPING = 5;
 	private final int grouping;
 
 	public DefaultWorkoutPrinter(){

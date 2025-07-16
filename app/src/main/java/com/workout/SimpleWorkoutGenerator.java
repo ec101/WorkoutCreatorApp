@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class SimpleWorkoutGenerator extends AbstractWorkoutGenerator {
 
-	private static final int WORKOUT_SIZE = 16;
+	private static final int WORKOUT_SIZE = 25;
 
 	public SimpleWorkoutGenerator(WorkoutArguments args, List<Exercise> exercises) {
 		super(args, exercises);
@@ -17,12 +17,13 @@ public class SimpleWorkoutGenerator extends AbstractWorkoutGenerator {
 		DefaultWorkout workout = new DefaultWorkout();
 		List<Exercise> exercisesCopy = shuffleExercises(exercises);
 		for(int i = 0; i < WORKOUT_SIZE; i++) {
-			Exercise nextExercise = getNextExercise(i, exercisesCopy);
+			Exercise nextExercise = exercisesCopy.remove(0);
 			if(nextExercise != null) {
 				workout.addExercise(nextExercise);
 			}else {
 				System.err.println("Unable to find exercise!");
 			}
+			exercisesCopy.add(nextExercise);
 		}
 
 		return workout;
@@ -33,13 +34,4 @@ public class SimpleWorkoutGenerator extends AbstractWorkoutGenerator {
 		Collections.shuffle(exercisesCopy, new Random(System.currentTimeMillis()));
 		return exercisesCopy;
 	}
-	
-	private Exercise getNextExercise(int index, List<Exercise> exercises) {
-		int i = index;
-		if(i >= exercises.size()) {
-			i = i % exercises.size();
-		}
-		return exercises.get(i);
-	}
-
 }
